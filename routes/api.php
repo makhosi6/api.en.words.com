@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +17,18 @@ use App\Http\Controllers\WordController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    // return $request->bearerToken();
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/whoami', function (Request $request) {
+
+   //    'token' => $request->bearerToken(),
+
+   return  $request->user();
 });
 
 
 
 Route::apiResource('words', WordController::class)->middleware('auth:sanctum');
+Route::apiResource('content', ContentController::class)->middleware('auth:sanctum');
+// ->except([ 'destroy','update']);;
 
 
 

@@ -32,7 +32,6 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-
     'connections' => [
 
         'sqlite' => [
@@ -92,7 +91,11 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://'.env('MONGO_DB_USER').':'.env('MONGO_DB_PASS').'@'.env('MONGO_DB_CLUSTER_URL').'/'.env('MONGO_DB_NAME').'?retryWrites=true&w=majority'),
+            'database' => env('MONGO_DB_NAME')
+    ]
     ],
 
     /*
