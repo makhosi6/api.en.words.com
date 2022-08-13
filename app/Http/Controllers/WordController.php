@@ -25,7 +25,7 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        // try {
             ///create word
             $word =  Word::create([
                 'key' => $request->key,
@@ -37,9 +37,9 @@ class WordController extends Controller
             ///save word
             $word->save();
             return response()->json($word, 201);
-        } catch (\Throwable $th) {
-            abort(403);
-        }
+        // } catch (\Throwable $th) {
+        //     abort(403);
+        // }
     }
 
     /**

@@ -30,7 +30,9 @@ class Content extends Model
      */
     protected $fillable = [
         'key',
-        'data'
+        'data',
+        'audio',
+        'total'
     ];
 
 }

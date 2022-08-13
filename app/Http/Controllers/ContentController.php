@@ -31,9 +31,14 @@ class ContentController extends Controller
             ///create word and save
             $content = Content::updateOrCreate(['key' => $request->get('key'),], [
                 'data' => $request->get('data'),
+                'total' => $request->get('total'),
+                'audio' => $request->get('audio'),
+              
             ]);
 
-            return response()->json($content, 201);
+            $request->size = 9000;
+
+            return response()->json($request, 201);
         } catch (\Throwable $th) {
             abort(500);
         }

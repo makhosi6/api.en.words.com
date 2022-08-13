@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique()->nullable('false');
-            $table->array('data');
+            $table->json('data');
+            $table->integer('total');
+            $table->array('audio');
             $table->timestamps();
         });
       
