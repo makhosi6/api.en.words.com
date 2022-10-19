@@ -16,7 +16,12 @@ class ContentController extends Controller
      */
     public function index()
     {
-        return Content::select('data')->paginate();
+        try {
+            return Content::select('data')->paginate();
+        } catch (\Throwable $th) {
+        
+            abort(500);
+        }
     }
 
     /**

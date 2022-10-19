@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,5 +40,9 @@ Route::apiResource('content', ContentController::class)->middleware('auth:sanctu
 
 //  A8E6YziXl3RmoYAq1LjIH8f8LZtEbrDDsOEqAs8i
 
-
+/**
+ * /articles
+ * 
+ */
+Route::apiResource('articles', ArticleController::class)->middleware('auth:sanctum'); 
 //// 
