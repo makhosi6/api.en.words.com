@@ -18,6 +18,6 @@ class Article extends Model
        'body',
        'title',
        'source',
-       'language'
+       'lang'
    ];
 }
