@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Content;
 
 
@@ -19,9 +20,24 @@ class ContentController extends Controller
         try {
             return Content::select('data')->paginate();
         } catch (\Throwable $th) {
-        
+        Log::debug($th);
             abort(500);
         }
+    }
+    /**
+     *
+     */
+    public function show($id)
+    {
+try {
+    $content = Content::where('key', $id)->first();
+     return $content["data"];
+} catch (\Throwable $th) {
+    Log::debug($th);
+    abort(500);
+}
+
+
     }
 
     /**
@@ -38,13 +54,14 @@ class ContentController extends Controller
                 'data' => $request->get('data'),
                 'total' => $request->get('total'),
                 'audio' => $request->get('audio'),
-              
+
             ]);
 
-            $request->size = 9000;
+           $request->size = 9000;
 
             return response()->json($request, 201);
         } catch (\Throwable $th) {
+            Log::debug($th);
             abort(500);
         }
     }
